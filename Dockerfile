@@ -1,8 +1,6 @@
-FROM nginx
+FROM nginx:latest
 EXPOSE 80
-COPY file.json /gitRep/h/file.json
+COPY file.json /usr/share/nginx/json/file.json
 COPY back.conf /etc/nginx/conf.d/default.conf
-
 RUN nginx -t
-RUN service nginx stop
-RUN service nginx start
+CMD /usr/sbin/nginx -g "daemon off;"
